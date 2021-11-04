@@ -1,94 +1,226 @@
-# Лайт-сборка Create React App
+# Критерии приема
 
-Базовая сборка Create React App + Prettier + Husky + ESLint + Classnames + Modern Normalize + deploy gh-pages
+- Созданы репозитории `goit-react-hw-02-feedback` и
+  `goit-react-hw-02-phonebook`.
+- При сдаче домашней работы есть две ссылки: на исходные файлы и рабочие.
+  страницы каждого задания на `GitHub pages`.
+- При запуске кода задания, в консоли нету ошибок и предупреждений.
+- Для каждого компонента есть отдельный файл в папке `src/components`.
+- Для компонентов описаны `propTypes`, и где необходимо, `defaultProps`.
+- Все что компонент ожидает в виде пропсов, передается ему при вызове.
+- JS-код чистый и понятный, используется `Prettier`.
+- Стилизация делается только `SASS`, `CSS-модулями` или `Styled Components`.
+  Выделяй 20% времени на стилизацию и 80% на JS.
 
-## Для установки сборки:
+# Задания
 
-1. Копируем этот репозиторий себе.
+## Виджет отзывов
 
-2. Открываем в VSCode и запускаем в консоли команду `npm ci` чтобы установить загрузчики и плагины из перечня
-   "package-lock.json".
+Как и большинство компаний, кафе Expresso собирает отзывы от своих клиентов.
+Твоя задача - создать приложение для сбора статистики. Есть всего три варианта
+обратной связи: хорошо, нейтрально и плохо.
 
-3. Меняем под себя значения ключа в файле "package-lock.json":
-   `"name": "react-default"` на `"name": "имя_вашего_проекта"` или просто `"name": ""`
+### Шаг 1
 
-4. Меняем под себя значения ключей в файле "package.json":
-   1. `"name": "react-default"` на `"name": "имя_вашего_проекта"` или просто `"name": ""`;
-   2. В параметрах "repository" - `"url": "git+https://github.com/Eduard-Konovka/react-default.git"` на
-      `"url": "git+https://github.com/ваше_имя_на_ГитХабе/имя_вашего_проекта.git"`;
-   3. В параметрах "bugs" - `"url": "https://github.com/Eduard-Konovka/react-default.git/issues"` на
-      `"url": "https://github.com/ваше_имя_на_ГитХабе/имя_вашего_проекта.git/issues"`;
-   4. `"author": "Eduard Konovka <ed098ua@gmail.com>"` на `"author": "Ваше_имя <ваш_e-mail>"` или просто `"author": ""`;
-   5. `"homepage": "https://Eduard-Konovka.github.io/react-default"` на
-      `"homepage": "https://ваше_имя_на_ГитХабе.github.io/имя_вашего_проекта"`.
+Приложение должно отображать количество собранных отзывов для каждой категории.
+Приложение не должно сохранять статистику отзывов между разными сессиями
+(обновление страницы).
 
-## Команды скриптов в консоли bash:
+Состояние приложения обязательно должно быть следующего вида, добавлять новые
+свойства нельзя.
 
-Вас интересуют первых два скрипта: `npm start` и `npm run deploy` :)
+```bash
+state = {
+  good: 0,
+  neutral: 0,
+  bad: 0
+}
+```
 
-### `npm start`
+Интерфейс может выглядеть так.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![preview](https://github.com/goitacademy/react-homework/blob/master/homework-02/feedback/mockup/step-1.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Шаг 2
 
-### `npm run deploy`
+Расширь функционал приложения так, чтобы в интерфейсе отображалось больше
+статистики о собранных отзывах. Добавь отображение общего количества собранных
+отзывов из всех категорий и процент положительных отзывов. Для этого создай
+вспомогательные методы `countTotalFeedback()` и
+`countPositiveFeedbackPercentage()`, подсчитывающие эти значения основываясь на
+данных в состоянии (вычисляемые данные).
 
-Deploy development files to GitHub.
+![preview](https://github.com/goitacademy/react-homework/blob/master/homework-02/feedback/mockup/step-2.png)
 
-### `npm test`
+### Шаг 3
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Выполни рефакторинг приложения. Состояние приложения должно оставаться в
+корневом компоненте `<App>`.
 
-### `npm run build`
+- Вынеси отображение статистики в отдельный компонент
+  `<Statistics good={} neutral={} bad={} total={} positivePercentage={}>`.
+- Вынеси блок кнопок в компонент
+  `<FeedbackOptions options={} onLeaveFeedback={}>`.
+- Создай компонент `<Section title="">`, который рендерит секцию с заголовком и
+  детей (children). Оберни каждый из `<Statistics>` и `<FeedbackOptions>` в
+  созданный компонент секции.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Шаг 4
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Расширь функционал приложения так, чтобы блок статистики рендерился только после
+того, как был собран хотя бы один отзыв. Сообщение об отсутствиии статистики
+вынеси в компонент `<Notification message="No feedback given">`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![preview](https://github.com/goitacademy/react-homework/blob/master/homework-02/feedback/mockup/preview.gif)
 
-### `npm run eject`
+## Телефонная книга
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Напиши приложение хранения контактов телефонной книги.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Шаг 1
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Приложение должно состоять из формы и списка контактов. На текущем шаге реализуй
+добавление имени контакта и отображение списка контактов. Приложение не должно
+сохранять контакты между разными сессиями (обновление страницы).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Используй эту разметку инпута с встроенной валидацией для имени контакта.
 
-## Learn More
+```html
+<input
+  type="text"
+  name="name"
+  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+  title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+  required
+/>
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Состояние хранящееся в родительском компоненте `<App>` обязательно должно быть
+следующего вида, добавлять новые свойства нельзя.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+state = {
+  contacts: [],
+  name: ''
+}
+```
 
-### Code Splitting
+Каждый контакт должен быть объектом со свойствами `name` и `id`. Для генерации
+идентификаторов используй любой подходящий пакет, например
+[uuid](https://www.npmjs.com/package/uuid#version-4). После завершения этого
+шага, приложение должно выглядеть примерно так.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![preview](https://github.com/goitacademy/react-homework/blob/master/homework-02/phonebook/mockup/step-1.png)
 
-### Analyzing the Bundle Size
+### Шаг 2
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Расширь функционал приложения, позволив пользователям добавлять номера
+телефонов. Для этого добавь `<input type="tel">` в форму, и свойство для
+хранения его значения в состоянии.
 
-### Making a Progressive Web App
+```bash
+state = {
+  contacts: [],
+  name: '',
+  number: ''
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Используй эту разметку инпута с встроенной валидацией для номера контакта.
 
-### Advanced Configuration
+```html
+<input
+  type="tel"
+  name="number"
+  pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+  title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+  required
+/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+После завершения этого шага, приложение должно выглядеть примерно так.
 
-### Deployment
+![preview](https://github.com/goitacademy/react-homework/blob/master/homework-02/phonebook/mockup/step-2.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Шаг 3
 
-### `npm run build` fails to minify
+Добавь поле поиска, которое можно использовать для фильтрации списка контактов
+по имени.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Поле поиска это инпут без формы, значение которого записывается в состояние
+  (контролируемый элемент).
+- Логика фильтрации должна быть нечувствительна к регистру.
+
+```bash
+state = {
+  contacts: [],
+  filter: '',
+  name: '',
+  number: ''
+}
+```
+
+![preview](https://github.com/goitacademy/react-homework/blob/master/homework-02/phonebook/mockup/step-3.gif)
+
+Когда мы работаем над новым функционалом, бывает удобно жестко закодировать
+некоторые данные в состояние. Это избавит от необходимости вручную вводить
+данные в интерфейсе для тестирования работы нового функционала. Например можно
+использовать такое начальное состояние.
+
+```bash
+state = {
+  contacts: [
+    {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+  ],
+  filter: '',
+  name: '',
+  number: ''
+}
+```
+
+### Шаг 4
+
+Если твое приложение реализовано в одном компоненте `<App>`, выполни
+рефакторинг, выделив подходящие части в отдельные компоненты. В состоянии
+корневого компонента `<App>` останутся только свойства `contacts` и `filter`.
+
+```bash
+state = {
+  contacts: [],
+  filter: ''
+}
+```
+
+Достаточно выделить четыре компонента: форма добавления контактов, список
+контактов, элемент списка контактов и фильтр поиска.
+
+После рефакторинга корневой компонент приложения будет выглядеть так.
+
+```html
+<div>
+  <h1>Phonebook</h1>
+  <ContactForm ... />
+
+  <h2>Contacts</h2>
+  <Filter ... />
+  <ContactList ... />
+</div>
+```
+
+### Шаг 5
+
+Запрети пользователю возможность добавлять контакты, имена которых уже есть в
+телефонной книге. При попытке выполнить такое действие выведи `alert` с
+предупреждением.
+
+![preview](https://github.com/goitacademy/react-homework/blob/master/homework-02/phonebook/mockup/step-5.png)
+
+### Шаг 6
+
+Расширь функционал приложения, позволив пользователю удалять ранее сохраненные
+контакты.
+
+![preview](https://github.com/goitacademy/react-homework/blob/master/homework-02/phonebook/mockup/step-6.gif)
