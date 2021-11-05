@@ -19,7 +19,7 @@ class ContactForm extends Component {
           required
           className={s.input}
         />
-        <button className={s.btn}></button>
+        <button className={s.btn}>Add contact</button>
       </div>
     );
   }
