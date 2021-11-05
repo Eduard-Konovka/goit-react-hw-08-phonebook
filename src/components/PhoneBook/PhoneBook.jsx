@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 // import PropTypes from 'prop-types'
 
-export default class PhoneBook extends Component {
+class PhoneBook extends Component {
   // static propTypes = {
   //   prop: PropTypes
   // }
@@ -14,3 +14,5 @@ export default class PhoneBook extends Component {
     )
   }
 }
+
+export default PhoneBook;
