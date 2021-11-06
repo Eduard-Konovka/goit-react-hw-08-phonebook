@@ -30,7 +30,7 @@ class ContactForm extends Component {
 
   render() {
     const { name, number } = this.state;
-    const toChenge = this.hendleChenge;
+    const toChange = this.hendleChenge;
     const toSubmite = this.hendleSubmite;
 
     return (
@@ -44,7 +44,7 @@ class ContactForm extends Component {
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
             value={name}
-            onChange={toChenge}
+            onChange={toChange}
             className={s.input}
           />
 
@@ -56,7 +56,7 @@ class ContactForm extends Component {
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
             value={number}
-            onChange={toChenge}
+            onChange={toChange}
             className={s.input}
           />
 

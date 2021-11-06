@@ -26,7 +26,7 @@ class App extends Component {
       number,
     };
 
-    name
+    contacts.map(contact => contact.name).includes(name)
       ? alert(`${name} is already in contacts.`)
       : this.setState({ contacts: [...contacts, contact] });
   };
@@ -44,11 +44,18 @@ class App extends Component {
     );
   };
 
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   render() {
     const { filter } = this.state;
     const submitHandler = this.formSubmitHandler;
     const changeFilter = this.changeFilter;
     const visibleContacts = this.getVisibleContacts();
+    const deleteContact = this.deleteContact;
 
     return (
       <Container title="Phonebook">
@@ -57,8 +64,11 @@ class App extends Component {
         </Section>
 
         <Section title="Contacts">
-          <Filter value={filter} onChange={changeFilter} />
-          <ContactList contacts={visibleContacts} />
+          <Filter value={filter} forChange={changeFilter} />
+          <ContactList
+            contacts={visibleContacts}
+            forDeleteContact={deleteContact}
+          />
         </Section>
       </Container>
     );
