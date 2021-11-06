@@ -9,9 +9,14 @@ class ContactForm extends Component {
 
   state = {
     name: '',
+    number: '',
   };
 
-  hendleChenge = e => this.setState({ name: e.currentTarget.value });
+  hendleChenge = e => {
+    const { name, value } = e.currentTarget;
+
+    this.setState({ [name]: value });
+  };
 
   hendleSubmite = e => {
     e.preventDefault();
@@ -20,10 +25,11 @@ class ContactForm extends Component {
   };
 
   reset = () => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
+    const { name, number } = this.state;
     const toChenge = this.hendleChenge;
     const toSubmite = this.hendleSubmite;
 
@@ -37,10 +43,23 @@ class ContactForm extends Component {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
-            value={this.state.name}
+            value={name}
             onChange={toChenge}
             className={s.input}
           />
+
+          <p className={s.title}>Number</p>
+          <input
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+            required
+            value={number}
+            onChange={toChenge}
+            className={s.input}
+          />
+
           <button className={s.btn}>Add contact</button>
         </label>
       </form>

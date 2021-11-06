@@ -12,10 +12,11 @@ class App extends Component {
     contacts: [],
   };
 
-  formSubmitHandler = ({ name }) => {
+  formSubmitHandler = ({ name, number }) => {
     const { contacts } = this.state;
     const contact = {
       name,
+      number,
       id: shortid.generate(),
     };
 

@@ -6,7 +6,7 @@ const ContactList = ({ contacts }) => {
     <ul className={s.list}>
       {contacts.map(contact => (
         <li key={contact.id} className={s.item}>
-          {contact.name}
+          {`${contact.name}: ${contact.number}`}
         </li>
       ))}
     </ul>
