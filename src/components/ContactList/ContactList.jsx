@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 
-const ContactList = ({ contacts, forDeleteContact }) => {
+export default function ContactList({ contacts, forDeleteContact }) {
   return (
     <ul className={s.list}>
       {contacts.map(contact => (
@@ -18,7 +18,7 @@ const ContactList = ({ contacts, forDeleteContact }) => {
       ))}
     </ul>
   );
-};
+}
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
@@ -28,7 +28,5 @@ ContactList.propTypes = {
       id: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  // forDeleteContact: PropTypes.func.isRequired,
+  forDeleteContact: PropTypes.func.isRequired,
 };
-
-export default ContactList;
