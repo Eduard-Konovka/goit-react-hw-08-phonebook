@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { getContacts } from 'store/contacts/contacts-selector';
+import contactsActions from 'store/contacts/contacts-actions';
 import s from './ContactForm.module.css';
 
-export default function ContactForm({ forSubmit }) {
+export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const hendleChenge = e => {
     const { name, value } = e.target;
@@ -25,7 +29,11 @@ export default function ContactForm({ forSubmit }) {
 
   const hendleSubmite = e => {
     e.preventDefault();
-    forSubmit({ name, number });
+
+    contacts.map(contact => contact.name).includes(name)
+      ? alert(`${name} is already in contacts.`)
+      : dispatch(contactsActions.addContact({ name, number }));
+
     reset();
   };
 
@@ -66,7 +74,3 @@ export default function ContactForm({ forSubmit }) {
     </form>
   );
 }
-
-ContactForm.propTypes = {
-  forSubmit: PropTypes.func.isRequired,
-};

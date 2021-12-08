@@ -1,7 +1,14 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { getVisibleContacts } from 'store/contacts/contacts-selector';
+import contactsActions from 'store/contacts/contacts-actions';
 import s from './ContactList.module.css';
 
-export default function ContactList({ contacts, forDeleteContact }) {
+export default function ContactList() {
+  const contacts = useSelector(getVisibleContacts);
+  const dispatch = useDispatch();
+
+  const forDeleteContact = id => dispatch(contactsActions.deleteContact(id));
+
   return (
     <ul className={s.list}>
       {contacts.map(contact => (
@@ -19,14 +26,3 @@ export default function ContactList({ contacts, forDeleteContact }) {
     </ul>
   );
 }
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  forDeleteContact: PropTypes.func.isRequired,
-};
