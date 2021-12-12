@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'store/contacts/contacts-selector';
-import contactsActions from 'store/contacts/contacts-actions';
+import { getContacts } from 'redux/contacts/contacts-selector';
+import contactsOperations from 'redux/contacts/contacts-operations';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -32,7 +32,7 @@ export default function ContactForm() {
 
     contacts.map(contact => contact.name).includes(name)
       ? alert(`${name} is already in contacts.`)
-      : dispatch(contactsActions.addContact({ name, number }));
+      : dispatch(contactsOperations.addContact({ name, number }));
 
     reset();
   };
