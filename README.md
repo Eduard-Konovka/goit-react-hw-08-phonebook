@@ -5,8 +5,10 @@
 
 ## Телефонная книга
 
-Выполни рефакторинг кода приложения [«Телефонная книга»](https://github.com/Eduard-Konovka/goit-react-hw-06-phonebook). Удали код отвечающий за хранение и чтение контактов из локального хранилища и добавь работу с бекендом
-для хранения контактов.
+Выполни рефакторинг кода приложения
+[«Телефонная книга»](https://github.com/Eduard-Konovka/goit-react-hw-06-phonebook).
+Удали код отвечающий за хранение и чтение контактов из локального хранилища и
+добавь работу с бекендом для хранения контактов.
 
 Создай бекенд для разработки при помощи UI-сервиса
 [mockapi.io](https://mockapi.io). Зарегистрируйся используя свой аккаунт GitHub.
@@ -16,7 +18,5 @@
 
 <img src="https://github.com/goitacademy/react-homework/blob/master/homework-07/resource.png" alt="Contact schema" with="400" />
 
-Используй функцию
-[createAsyncThunk](https://redux-toolkit.js.org/api/createAsyncThunk) или
-[RTK Query](https://redux-toolkit.js.org/rtk-query/overview) для взаимодействия
-с бекендом и асинхронными запросами.
+Используй низкоуровневый API для взаимодействия с бекендом и асинхронными
+запросами.
