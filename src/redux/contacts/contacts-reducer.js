@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import {
   fetchContactsRequest,
   fetchContactsSuccess,
@@ -37,7 +38,7 @@ const filter = createReducer('', {
 });
 
 const error = createReducer(null, {
-  [fetchContactsError]: error => console.log(error),
+  [fetchContactsError]: (_, { payload }) => toast.error(payload),
   [addContactError]: error => console.log(error),
   [deleteContactError]: error => console.log(error),
 });

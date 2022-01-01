@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'redux/contacts/contacts-selector';
+import { getContacts } from 'redux/contacts/contacts-selectors';
 import contactsOperations from 'redux/contacts/contacts-operations';
+import Button from 'components/Button';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -31,7 +32,7 @@ export default function ContactForm() {
     e.preventDefault();
 
     contacts.map(contact => contact.name).includes(name)
-      ? alert(`${name} is already in contacts.`)
+      ? alert(`A contact named ${name} already exists!`)
       : dispatch(contactsOperations.addContact({ name, number }));
 
     reset();
@@ -50,7 +51,7 @@ export default function ContactForm() {
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+          title="The name can only consist of letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan, etc."
           required
           value={name}
           onChange={hendleChenge}
@@ -62,14 +63,14 @@ export default function ContactForm() {
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={number}
           onChange={hendleChenge}
           className={s.input}
         />
 
-        <button className={s.btn}>Add contact</button>
+        <Button type="submit">Add contact</Button>
       </label>
     </form>
   );

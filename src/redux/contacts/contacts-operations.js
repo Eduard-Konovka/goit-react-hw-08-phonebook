@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import {
   fetchContactsRequest,
   fetchContactsSuccess,
@@ -11,28 +12,14 @@ import {
   deleteContactError,
 } from './contacts-actions';
 
-axios.defaults.baseURL = process.env.REACT_APP_URL;
-
 const fetchContacts = () => dispatch => {
   dispatch(fetchContactsRequest());
 
   axios
     .get('/contacts')
     .then(({ data }) => dispatch(fetchContactsSuccess(data)))
-    .catch(error => dispatch(fetchContactsError(error)));
+    .catch(error => dispatch(fetchContactsError(error.message)));
 };
-
-// Альтернатива fetchContacts на ахинхронных функциях
-// const fetchContacts = () => async dispatch => {
-//   dispatch(fetchContactsRequest());
-
-//   try {
-//     const { data } = await axios.get('/contacts');
-//     dispatch(fetchContactsSuccess(data));
-//   } catch (error) {
-//     dispatch(fetchContactsError(error));
-//   }
-// };
 
 const addContact =
   ({ name, number }) =>
@@ -46,8 +33,11 @@ const addContact =
 
     axios
       .post('/contacts', contact)
-      .then(({ data }) => dispatch(addContactSuccess(data)))
-      .catch(error => dispatch(addContactError(error)));
+      .then(({ data }) => {
+        dispatch(addContactSuccess(data));
+        toast.success('Contact successfully created');
+      })
+      .catch(error => dispatch(addContactError(error.message)));
   };
 
 const deleteContact = id => dispatch => {
@@ -55,8 +45,11 @@ const deleteContact = id => dispatch => {
 
   axios
     .delete(`/contacts/${id}`)
-    .then(() => dispatch(deleteContactSuccess(id)))
-    .catch(error => dispatch(deleteContactError(error)));
+    .then(() => {
+      dispatch(deleteContactSuccess(id));
+      toast.success('Contact successfully deleted');
+    })
+    .catch(error => dispatch(deleteContactError(error.message)));
 };
 
 const contactsOperations = {

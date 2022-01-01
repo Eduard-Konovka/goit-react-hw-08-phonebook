@@ -12,3 +12,17 @@ export const getVisibleContacts = state => {
     contact.name.toLowerCase().includes(normalizedFilter),
   );
 };
+
+const getTotalContactCount = state => {
+  const contacts = getContacts(state);
+  return contacts.length;
+};
+
+const contactsSelectors = {
+  getLoading,
+  getFilter,
+  getVisibleContacts,
+  getTotalContactCount,
+};
+
+export default contactsSelectors;
