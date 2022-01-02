@@ -1,19 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
-import Section from 'components/Section';
+import Container from 'components/Container';
 import Button from 'components/Button';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import brokenGlass from './brokenGlass3.png';
+import s from './pages.module.css';
 
 export default function LoginView() {
   const dispatch = useDispatch();
@@ -39,30 +30,35 @@ export default function LoginView() {
   };
 
   return (
-    <Section title="Login page">
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          E-mail
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
+    <Container>
+      <div className={s.glass}>
+        <img src={brokenGlass} alt="Broken glass" />
+      </div>
 
-        <label style={styles.label}>
-          Password
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
+      <div className={s.window}>
+        <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
+          <label className={s.label}>
+            E-mail
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </label>
 
-        <Button type="submit">Sign in</Button>
-      </form>
-    </Section>
+          <label className={s.label}>
+            Password
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </label>
+          <Button type="submit">Sign in</Button>
+        </form>
+      </div>
+    </Container>
   );
 }

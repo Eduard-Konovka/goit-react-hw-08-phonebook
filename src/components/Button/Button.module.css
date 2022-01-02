@@ -5,8 +5,8 @@
   padding: 5px 15px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: #be6b33;
-  color: #1f0802;
+  background-color: #5f6a72;
+  color: #1d1d1d;
   font-family: inherit;
   font: inherit;
   font-weight: 500;
@@ -19,15 +19,15 @@
 
 .btn:hover,
 .btn:focus {
-  background-color: #ad4200;
-  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 1px 3px rgba(0, 0, 0, 0.12);
+  background-color: #8fa4b8;
+  box-shadow: 0px 2px 1px rgba(255, 255, 255, 0.4),
+    0px 1px 1px rgba(255, 255, 255, 0.28), 0px 1px 3px rgba(255, 255, 255, 0.24);
 }
 
 .btn:active {
-  box-shadow: 2px 5px 2px 0 rgb(0 0 0 / 0.5);
+  box-shadow: 2px 5px 2px 0 rgb(255 255 255 / 0.5);
 }
 
 .btn.disabled {
-  background-color: #aa846c;
+  background-color: #525464;
 }

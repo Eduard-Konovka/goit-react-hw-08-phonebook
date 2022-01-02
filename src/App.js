@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { authOperations, authSelectors } from 'redux/auth';
-import Container from 'components/Container';
 import AppBar from 'components/AppBar';
+import GlobalSpinner from 'components/GlobalSpinner';
 import Spinner from 'components/Spinner';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
@@ -32,9 +32,9 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <Container title="Phonebook">
+    <>
       {isFetchingCurrentUser ? (
-        <Spinner size={300} />
+        <GlobalSpinner />
       ) : (
         <>
           <AppBar />
@@ -79,6 +79,6 @@ export default function App() {
       )}
 
       <ToastContainer autoClose={3000} />
-    </Container>
+    </>
   );
 }

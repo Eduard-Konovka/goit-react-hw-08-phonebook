@@ -10,8 +10,11 @@ export default function UserMenu() {
 
   return (
     <div className={s.container}>
-      <img src={avatar} alt="" width="32" className={s.avatar} />
-      <span className={s.name}>Welcome, {name}!</span>
+      <img src={avatar} alt="" width="64" className={s.avatar} />
+      <div className={s.greeting}>
+        <span className={s.name}>Welcome,</span>
+        <span className={s.accent}>{`${name}!`}</span>
+      </div>
       <Button type="button" onClick={() => dispatch(authOperations.logOut())}>
         Log out
       </Button>

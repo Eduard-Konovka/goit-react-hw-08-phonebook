@@ -1,12 +1,46 @@
-import Section from 'components/Section';
+import Container from 'components/Container';
+import brokenGlass from './brokenGlass1.png';
+import s from './pages.module.css';
 
 export default function HomeView() {
   return (
-    <Section title="Home page">
-      Приветственная страница нашего сервиса
-      <span role="img" aria-label="Иконка приветствия">
-        💁‍♀️
-      </span>
-    </Section>
+    <Container>
+      <div className={s.box}>
+        <div className={s.text}>
+          <p>People use the contact book every day.</p>
+
+          <p>
+            They prefer to use them rather than memorize phone numbers by heart,
+            as it is very convenient to operate.
+          </p>
+
+          <p>
+            For examplemobile phone books where you just need to choose a name
+            person, on him, and will automatically be produced dialing a number.
+          </p>
+        </div>
+
+        <div className={s.glass}>
+          <img src={brokenGlass} alt="Broken glass" />
+        </div>
+
+        <div className={s.text}>
+          <p>
+            The contact book can be implemented even within the company. This is
+            possible thanks to this software product.
+          </p>
+
+          <p>
+            Using the contact book, employees can call each other in a matter of
+            seconds.
+          </p>
+
+          <p>
+            No need to memorize numbers or ask colleagues for them. Because all
+            data will be stored in an electronic contact book.
+          </p>
+        </div>
+      </div>
+    </Container>
   );
 }

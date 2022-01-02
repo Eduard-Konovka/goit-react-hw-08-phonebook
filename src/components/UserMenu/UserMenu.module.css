@@ -4,10 +4,24 @@
 }
 
 .avatar {
-  margin-right: 4px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
 }
 
 .name {
-  font-weight: 700;
-  margin-right: 12px;
+  font-weight: 600;
+  margin-right: 18px;
+  color: #6d7e83;
+}
+
+.accent {
+  composes: name;
+  color: #2196f3;
 }
