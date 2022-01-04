@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
 import Container from 'components/Container';
 import Button from 'components/Button';
-import brokenGlass from './brokenGlass2.png';
+import brokenGlass from 'img/brokenGlass2.png';
+import sound from 'audio/glassBreak2.mp3';
 import s from './pages.module.css';
 
 export default function RegisterView() {
@@ -11,6 +12,10 @@ export default function RegisterView() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    new Audio(sound).play();
+  }, []);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {

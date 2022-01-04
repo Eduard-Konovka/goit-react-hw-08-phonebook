@@ -31,19 +31,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build",
+    "deploy": "netlify deploy -p",
     "predeploy": "npm run build",
     "prepare": "husky install"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Eduard-Konovka/goit-react-hw-08-phonebook.git"
-  },
   "author": "Eduard Konovka <ed098ua@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/Eduard-Konovka/goit-react-hw-08-phonebook/issues"
-  },
-  "homepage": "https://Eduard-Konovka.github.io/goit-react-hw-08-phonebook",
   "eslintConfig": {
     "extends": [
       "react-app",

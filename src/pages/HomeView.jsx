@@ -1,8 +1,14 @@
+import { useEffect } from 'react';
 import Container from 'components/Container';
-import brokenGlass from './brokenGlass1.png';
+import brokenGlass from 'img/brokenGlass1.png';
+import sound from 'audio/glassBreak1.mp3';
 import s from './pages.module.css';
 
 export default function HomeView() {
+  useEffect(() => {
+    new Audio(sound).play();
+  }, []);
+
   return (
     <Container>
       <div className={s.box}>
