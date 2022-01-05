@@ -11,8 +11,8 @@ export default function HomeView() {
 
   return (
     <Container>
-      <div className={s.box}>
-        <div className={s.text}>
+      <div className={s.window}>
+        <div className={s.textCasement}>
           <p>People use the contact book every day.</p>
 
           <p>
@@ -26,11 +26,11 @@ export default function HomeView() {
           </p>
         </div>
 
-        <div className={s.glass}>
+        <div className={s.brokenGlass}>
           <img src={brokenGlass} alt="Broken glass" />
         </div>
 
-        <div className={s.text}>
+        <div className={s.textCasement}>
           <p>
             The contact book can be implemented even within the company. This is
             possible thanks to this software product.

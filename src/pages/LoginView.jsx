@@ -36,33 +36,37 @@ export default function LoginView() {
 
   return (
     <Container>
-      <div className={s.glass}>
-        <img src={brokenGlass} alt="Broken glass" />
-      </div>
-
       <div className={s.window}>
-        <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
-          <label className={s.label}>
-            E-mail
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-            />
-          </label>
+        <div className={s.brokenGlass}>
+          <img src={brokenGlass} alt="Broken glass" />
+        </div>
 
-          <label className={s.label}>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-            />
-          </label>
-          <Button type="submit">Sign in</Button>
-        </form>
+        <div className={s.formCasement}>
+          <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
+            <label className={s.label}>
+              E-mail
+              <input
+                type="email"
+                name="email"
+                required
+                value={email}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label className={s.label}>
+              Password
+              <input
+                type="password"
+                name="password"
+                required
+                value={password}
+                onChange={handleChange}
+              />
+            </label>
+            <Button type="submit">Sign in</Button>
+          </form>
+        </div>
       </div>
     </Container>
   );

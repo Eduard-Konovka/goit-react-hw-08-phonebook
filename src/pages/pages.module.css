@@ -1,45 +1,47 @@
-.box {
+.window {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 28px;
   height: calc(100vh - (100vw * 0.078125) - 60px);
   margin: 20px;
-  box-shadow: 0px 2px 1px rgba(255, 255, 255, 0.4),
-    0px 1px 1px rgba(255, 255, 255, 0.28), 0px 1px 3px rgba(255, 255, 255, 0.24);
+  box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4),
+    0px 1px 2px rgba(255, 255, 255, 0.28), 0px 1px 6px rgba(255, 255, 255, 0.24);
 }
 
-.text {
-  width: calc(100vw * 0.27);
+.casement {
+  width: calc(100vw * 0.33);
   height: calc(100vw * 0.33);
+  border: solid 1px #808080;
   padding: 10px;
   margin: 10px;
-  color: #000407;
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: inset 0px 0px 6px 1px rgba(255, 255, 255, 0.9);
-  border: solid 2px #000000;
 }
 
-.window {
-  composes: text;
+.textCasement {
+  composes: casement;
+  width: calc(100vw * 0.28);
+  /* color: #000407; */
+}
+
+.formCasement {
+  composes: casement;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(100vw * 0.34);
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.glass {
-  composes: text;
-  width: calc(100vw * 0.34);
+.brokenGlass {
+  composes: casement;
   padding: 0;
   background-color: rgba(255, 255, 255, 0.08);
 }
 
 .form {
-  width: calc(100vw * 0.34 - 40px);
+  width: calc(100vw * 0.33 - 40px);
   font-size: 24px;
 }
 
@@ -50,7 +52,7 @@
 }
 
 .list {
-  composes: box;
+  composes: window;
   height: auto;
   background-color: rgba(255, 255, 255, 0.6);
   border: solid 1px #ffffff;
